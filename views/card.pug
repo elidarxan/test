@@ -1,0 +1,23 @@
+extends layout
+block content
+    .container 
+        .row 
+            each data in db
+                .col-lg-3.col-md-4.col-sm-6
+                    .card 
+                        .card-img(dataId= "/add/product/"+data.id) 
+                            img(src= "images/"+ data.img, alt="")
+                            p.saleing=  data.sale
+                                | %
+                        .card-text 
+                            h3= data.title 
+                            .price_box
+                                p.price= data.price 
+                                    |  Sum 
+                                if data.sale 
+                                    p.sale= data.price - (data.price * data.sale / 100)
+                                        |  Sale
+                            .card_bottom 
+                                p.date= data.dataTime.toLocaleDateString() 
+                                    i.far.fa-calendar-alt 
+                                p.category=  data.category

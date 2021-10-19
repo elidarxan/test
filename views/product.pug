@@ -1,0 +1,37 @@
+extends layout
+block content
+ if data
+    .container 
+        .row 
+            .col-lg-8 
+                    .card 
+                        .card-imgs 
+                            img(src= "images/"+ data.img, alt="")
+                            p.saleing=  data.sale
+                                | %
+                        .card-text 
+                            h3= data.title 
+                            .price_box
+                                p.price= data.price 
+                                    |  Sum 
+                                if data.sale 
+                                    p.sale= data.price - (data.price * data.sale / 100)
+                                    |  Sale
+                            .card_bottom 
+                                p.date= data.dataTime.toLocaleDateString() 
+                                    i.far.fa-calendar-alt 
+                                p.category=  data.category
+                        .card-comment 
+                            p= data.comment
+            .col-lg-4 
+                .card-info 
+                    h3 Foydalanuvchi 
+                    .card_info_bio 
+                        .left 
+                            img(src="", alt="user")
+                        .right 
+                            h4 ism 
+                            p telfon
+            .col-lg-12 
+                a(href="/add/delete/"+data.id class="btn btn-danger") oshirish 
+                a(href="/add/update/"+data.id class="btn btn-success") ozgartirish 

@@ -1,0 +1,12 @@
+extends layout
+block content
+    .container 
+        h1= title
+        form(action="/register"  method='POST')
+            input(type="text" placeholder="Ismingizni yozing" name="names").form-control.mt-3.mb-3 
+            input(type="text" placeholder="Familyanigizni yozing" name="surname").form-control.mt-3.mb-3 
+            input(type="text" placeholder="Loginigizni yozing" name="login").form-control.mt-3.mb-3 
+            input(type="password" placeholder="Parolingizni yozing" name="password").form-control.mt-3.mb-3 
+            input(type="password" placeholder="Parolingizni qaytadan yozing" name="password2").form-control.mt-3.mb-3 
+            input(type="text" placeholder="Telefonigizni yozing" name="phone").form-control.mt-3.mb-3 
+            button.btn.btn-danger Royhatdan otish  
