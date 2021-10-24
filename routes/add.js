@@ -2,6 +2,7 @@ const express = require('express');
 const dbProduct = require('../model/Product')
 const md = require('../middlawre/verifed')
 const fileFilter = require('../middlawre/fileUpload')
+const toDelete = require('../middlawre/toDelete')
 // console.log(upload);
 const router = express.Router();
 
@@ -68,12 +69,21 @@ router.get('/update/:id' , (req , res) => {
 /// Working one's card product EDIT method of POST
 
 router.post('/update/:id'  , fileFilter.single("img") , async (req , res) => {
+  const user = req.body
+  const img = await dbProduct.findById(req.params.id)
   const db = {
     title : req.body.title,
     price : req.body.price,
     comment : req.body.comment,
     category : req.body.category,
     img : req.file.filename,
+  }
+  
+  if(req.file){
+    user.img = req.file.filename
+    toDelete(img.img)
+  }else{
+    user.img = img
   }
   try {
     const ids = {_id : req.params.id}
@@ -88,7 +98,9 @@ router.post('/update/:id'  , fileFilter.single("img") , async (req , res) => {
 
 router.get('/delete/:id' ,  async (req , res) => {
   try {
+    const img = await Product.findById(req.params.id)
     const id = {_id : req.params.id}
+    toDelete(img.img)
     await  dbProduct.findByIdAndDelete(id) 
     res.redirect('/')
   } catch (error) {
