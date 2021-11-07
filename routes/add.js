@@ -98,7 +98,7 @@ router.post('/update/:id'  , fileFilter.single("img") , async (req , res) => {
 
 router.get('/delete/:id' ,  async (req , res) => {
   try {
-    const img = await Product.findById(req.params.id)
+    const img = await dbProduct.findById(req.params.id)
     const id = {_id : req.params.id}
     toDelete(img.img)
     await  dbProduct.findByIdAndDelete(id) 
@@ -107,14 +107,6 @@ router.get('/delete/:id' ,  async (req , res) => {
     console.log(error);
   }
   
-  // dbProduct.findByIdAndDelete(req.params.id , (err) => {
-  //   if(err){
-  //     console.log(err);
-  //   }else{
-  //     res.redirect('/')
-  //   }
-  // })
-
 
 })
 

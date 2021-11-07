@@ -26,4 +26,5 @@ const userDb = new schema({
 
 })
 
+
 module.exports = mongoose.model('userDb' ,userDb )

@@ -12,11 +12,13 @@ block content
                         .card-text 
                             h3= data.title 
                             .price_box
-                                p.price= data.price 
-                                    |  Sum 
+                                //- p.price= p 
+                                //-     |  Sum 
+                                //- p.price= data.price 
                                 if data.sale 
-                                    p.sale= data.price - (data.price * data.sale / 100)
+                                    p.sale= p
                                         |  Sale
+                                    p.sale= data.price - (data.price * data.sale / 100)
                             .card_bottom 
                                 p.date= data.dataTime.toLocaleDateString() 
                                     i.far.fa-calendar-alt 

@@ -9,29 +9,33 @@ block content
                             img(src= "images/"+ data.img, alt="")
                             p.saleing=  data.sale
                                 | %
+                        .card_bottom__prd
+                                p.sana= p 
+                                        | Maxsulot qo`shilgan sana:
+                                        i.far.fa-calendar-alt
+                                p.date= data.dataTime.toLocaleDateString()  
+                                //- p.category=  data.category
                         .card-text 
                             h3= data.title 
                             .price_box
-                                p.price= data.price 
-                                    |  Sum 
-                                if data.sale 
-                                    p.sale= data.price - (data.price * data.sale / 100)
-                                    |  Sale
-                            .card_bottom 
-                                p.date= data.dataTime.toLocaleDateString() 
-                                    i.far.fa-calendar-alt 
-                                p.category=  data.category
-                        .card-comment 
-                            p= data.comment
+                                //- p.price= p
+                                //-     |  Sum 
+                                //- p.price= data.price    
+                        .card_sale 
+                             if data.sale      
+                                    p.sale= data.price - (data.price * data.sale / 100) 
+                                        |   som     
+                        p.coment-titel 
+                            | mahsulot haqida  
+                            .card-comment 
+                               p.comment-p= data.comment
             .col-lg-4 
-                .card-info 
-                    h3 Foydalanuvchi 
-                    .card_info_bio 
-                        .left 
-                            img(src="", alt="user")
-                        .right 
-                            h4 ism 
-                            p telfon
+                .card--info 
+                   .user-info 
+                    img.user-icon(src="images/icon-user.jpg", alt="")
+                   if data.user      
+                        p.usere= data.names 
+                            |   som     
             .col-lg-12 
                 a(href="/add/delete/"+data.id class="btn btn-danger") oshirish 
                 a(href="/add/update/"+data.id class="btn btn-success") ozgartirish 

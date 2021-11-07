@@ -10,7 +10,7 @@
   background: white !important;
 }
 p{
-  font-weight: 600;
+  font-weight: 700;
 }
 .navbars .navbar-brand{
   color:  #db3727;
@@ -48,12 +48,28 @@ img{
   font-weight: 700;
 }
 
-.card .card-text .price_box,
-.card_bottom
-{
+.card .card-text .price_box{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  font-size: 25px;
 }
+.card_bottom{
+  justify-content: space-between;
+  display: flex;
+  font-size: 16px;
+}
+
+.card_bottom__prd{
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+
+}
+
+/* .sale.price{
+  color: #db3727;
+} */
 
 .card img{
   width: 100%;
@@ -106,3 +122,48 @@ body {
    justify-content: center;
 
 }
+
+
+.price{
+  font-weight: 700;
+  font-size: 25px;
+  font-family: 'Poppins', sans-serif;
+}
+ 
+.sale{
+  font-size: 20px;
+  font-weight: 900;
+  color: #082032;
+  font-family: 'Poppins', sans-serif;
+  text-transform: capitalize;
+   
+}
+.card-comment{
+  font-size: 20px; 
+}
+
+
+.card-comment{
+  border: .5px solid #DBD0C0;
+  background-color: #f0f0f0;
+}
+.comment-p{
+  font-size: 18px;
+  font-weight: 400;
+  color: #082032;
+  font-family: 'Poppins', sans-serif;
+  text-transform: capitalize;
+}
+
+.coment-titel{
+  margin-top: 40px;
+  line-height: 0%;
+  font-size: 20px;
+  font-weight: 900;
+  color: #082032;
+  font-family: 'Poppins', sans-serif;
+  text-transform: capitalize;
+}
+
+
+ 

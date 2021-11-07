@@ -10,8 +10,12 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const addRouter = require('./routes/add');
 const registerRouter = require('./routes/register');
+
+const auth = require('./middlawre/auth')
 // const { session } = require('passport');
 const app = express();
+
+
 
 app.use(require('connect-flash')())
 app.use(function (req , res , next) {
@@ -19,13 +23,21 @@ app.use(function (req , res , next) {
   next()
 })
 
+
+
 app.use(session({
   secret: 'secretApiKey',
   resave: true,
   saveUninitialized: true,
 }))
 
-mongoose.connect('mongodb://localhost:27017/deploy' , {useNewUrlParser : true , useUnifiedTopology: true });
+
+
+
+const uri = 'mongodb+srv://eldor:A5173407QSXgmxHG@newclaster.n2446.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+mongoose.connect( uri , {useNewUrlParser : true , useUnifiedTopology: true });
+
+
 
 const db = mongoose.connection
 db.on('open' , () => {
@@ -36,9 +48,14 @@ db.on('error' , (err) => {
   console.log(`MongoDb ERROR running` , err);
 })
 
+
+
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -55,10 +72,13 @@ app.get('*' , (req , res , next) => {
   next()
 })
 
-app.use('/', indexRouter);
-app.use('/add', addRouter);
-app.use('/users', usersRouter);
-app.use('/register', registerRouter);
+
+
+
+app.use('/', auth , indexRouter);
+app.use('/add', auth , addRouter);
+app.use('/users', auth , usersRouter);
+app.use('/register', auth , registerRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
