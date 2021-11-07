@@ -10,7 +10,10 @@ const dbProduct  = new schema ( {
         type : Number,
         required : true,
     },
-    sale : Number,
+    sale : {
+        type : Number,
+        default : 0
+    } ,
     category : {
         type : String
     },
@@ -18,7 +21,8 @@ const dbProduct  = new schema ( {
         type : String
     },
     img : {
-        type : String
+        type : String ,
+        default : "../public/images/no-image.png"
     },
     dataTime : {
         type : Date,
